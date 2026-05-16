@@ -8,9 +8,9 @@
     --green-btn: #2ecc71;
     --dark-green: #27ae60;
     --orange-circle: #f39c12;
-    --grey-bg: #f5f5f5;
+    --grey-bg: #f9f9f9;
     --grey-border: #ddd;
-    --dark-grey: #ccc;
+    --dark-grey: #bbb;
     --page-bg: #e9eaec;
     --main-text: #333;
 }
@@ -69,20 +69,21 @@ body {
 @media (min-width: 650px) {
     .container {
         font-size: 0;
+        position: relative; 
     }
     .shopping-list-section {
-        display: inline-block;
-        width: 60%;
+        display: block;
+        width: 58%;
         margin-bottom: 0;
-        vertical-align: top;
         font-size: 1rem;
     }
     .summary-section {
-        display: inline-block;
-        width: 35%;
-        margin-left: 5%;
-        vertical-align: top;
+        display: block;
+        width: 38%;
         font-size: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
 
@@ -95,12 +96,12 @@ body {
 .add-form input {
     display: inline-block;
     width: 75%;
+    height: 48px;
     padding: 12px 15px;
     border: 1px solid var(--grey-border);
     border-right: none;
     border-radius: 4px 0 0 4px;
     font-size: 1rem;
-    vertical-align: top;
     margin: 0;
 }
 
@@ -111,6 +112,7 @@ body {
 .blue-button {
     display: inline-block;
     width: 25%;
+    height: 48px;
     background-color: var(--main-blue);
     color: white;
     border: none;
@@ -120,14 +122,14 @@ body {
     font-weight: bold;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
-    vertical-align: top;
     margin: 0;
+    position: relative;
+    top: -2px;
 }
 
 .product-list {
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
 .product-row {
@@ -155,25 +157,28 @@ body {
     }
     .product-name {
         display: inline-block;
-        width: 35%;
+        width: 33%;
+        height: 38px;
+        line-height: 38px;
         margin-bottom: 0;
-        vertical-align: middle;
         font-size: 1.1rem;
     }
     .product-qty {
         display: inline-block;
-        width: 30%;
+        width: 32%;
+        height: 38px;
+        line-height: 38px;
         text-align: center;
         margin-bottom: 0;
-        vertical-align: middle;
         font-size: 1rem;
     }
     .product-actions {
         display: inline-block;
         width: 35%;
+        height: 38px;
+        line-height: 38px;
         text-align: right;
         margin-bottom: 0;
-        vertical-align: middle;
         font-size: 1rem;
     }
 }
@@ -184,7 +189,8 @@ body {
     border: 1px solid var(--main-blue);
     border-radius: 4px;
     width: 90px;
-    vertical-align: middle;
+    position: relative;
+    top: -2px;
 }
 
 .minus-btn, .plus-btn {
@@ -200,7 +206,8 @@ body {
     cursor: pointer;
     text-align: center;
     margin: 0 4px;
-    vertical-align: middle;
+    position: relative;
+    top: -4px;
 }
 
 .minus-btn {
@@ -210,7 +217,6 @@ body {
 
 .minus-btn:disabled {
     opacity: 0.4;
-    cursor: not-allowed;
 }
 
 .plus-btn {
@@ -228,7 +234,8 @@ body {
     border-radius: 4px;
     font-weight: bold;
     text-align: center;
-    vertical-align: middle;
+    position: relative;
+    top: -4px;
 }
 
 .status-btn {
@@ -237,11 +244,17 @@ body {
     border: 1px solid var(--grey-border);
     border-bottom: 3px solid var(--dark-grey);
     padding: 8px 12px;
+    height: 34px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
     margin-right: 4px;
-    vertical-align: middle;
+    position: relative;
+    top: -4px;
+}
+
+.bought-btn {
+    opacity: 0.5;
 }
 
 .delete-btn {
@@ -257,20 +270,25 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
-    vertical-align: middle;
+    position: relative;
+    top: -4px;
+}
+
+.summary-panel {
+    border: none;
+    padding: 0;
 }
 
 .summary-panel h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin: 0;
-    padding: 20px;
+    padding: 19px 20px;
     border-bottom: 1px solid var(--grey-border);
 }
 
 .tags {
     margin: 0;
-    padding: 20px;
-    list-style: none;
+    padding: 22px 20px;
     border-bottom: 1px solid var(--grey-border);
 }
 
@@ -281,18 +299,17 @@ body {
 .tags li {
     display: inline-block;
     margin-right: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .tag-item {
     background-color: var(--grey-bg);
     border: 1px solid var(--grey-border);
     display: inline-block;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 4px;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: bold;
-    vertical-align: middle;
 }
 
 .bought-item {
@@ -308,17 +325,17 @@ body {
 .tag-number {
     background-color: var(--orange-circle);
     color: white;
-    border-radius: 14px;
+    border-radius: 12px;
     display: inline-block;
-    min-width: 26px;
-    height: 26px;
-    line-height: 26px;
     padding: 0 8px;
-    font-size: 0.95rem;
+    height: 24px;
+    line-height: 24px;
+    font-size: 0.85rem;
     font-weight: normal;
     text-align: center;
     margin-left: 8px;
-    vertical-align: middle;
+    position: relative;
+    top: -1px;
 }
 
 [data-tooltip] {
@@ -328,8 +345,11 @@ body {
 [data-tooltip]::before {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 110%;
+    bottom: 125%;
     left: 50%;
+    margin-left: -70px;
+    width: 140px;
+    text-align: center;
     margin-bottom: 8px;
     background-color: var(--main-purple);
     color: white;
@@ -337,23 +357,21 @@ body {
     border-radius: 6px;
     font-size: 0.8rem;
     z-index: 10;
-    white-space: nowrap;
-    transform: translateX(-50%) scale(0);
+    transform: scale(0);
     transform-origin: bottom center;
     transition: transform 0.3s ease;
-    pointer-events: none;
 }
 
 [data-tooltip]:hover::before {
-    transform: translateX(-50%) scale(1);
+    transform: scale(1);
 }
 
 .student-badge {
     position: fixed;
-    bottom: -50px;
+    bottom: -60px;
     left: 20px;
     width: 140px;
-    height: 90px;
+    height: 110px;
     background-color: var(--main-purple);
     color: white;
     border-radius: 10px 10px 0 0;
@@ -404,6 +422,9 @@ body {
         margin-bottom: 20px;
         margin-left: 0;
     }
+    .summary-section {
+        position: static;
+    }
     .product-name, .product-qty, .product-actions {
         display: inline-block;
         width: auto;
@@ -430,6 +451,5 @@ body {
         opacity: 1;
         font-weight: bold;
         font-size: 1rem;
-        margin-bottom: 5px;
     }
 }
