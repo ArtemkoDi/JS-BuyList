@@ -1,17 +1,435 @@
-.product-item {
-	background-color: gray;
-	display: inline-block;
-	height: 25px;
-	padding: 5px;
-	border-radius: 5px;
+:root {
+    --main-blue: #2980b9;
+    --dark-blue: #1f618d;
+    --main-purple: #8e44ad;
+    --hover-purple: #3f51b5;
+    --red-btn: #e74c3c;
+    --dark-red: #c0392b;
+    --green-btn: #2ecc71;
+    --dark-green: #27ae60;
+    --orange-circle: #f39c12;
+    --grey-bg: #f5f5f5;
+    --grey-border: #ddd;
+    --dark-grey: #ccc;
+    --page-bg: #e9eaec;
+    --main-text: #333;
 }
 
-.amount {
-	background-color: yellow;
-	border-radius: 10px;
-	
-	display: inline-block;
-	height: 20px;
-	width: 20px;
-	text-align: center;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--main-text);
+    padding: 20px;
+    padding-bottom: 120px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.sr-only {
+    position: absolute;
+    top: -9999px;
+}
+
+.hidden-element {
+    visibility: hidden;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.shopping-list-section {
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--grey-border);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.summary-section {
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--grey-border);
+    border-radius: 4px;
+}
+
+@media (min-width: 800px) {
+    .container {
+        width: 900px;
+    }
+}
+
+@media (min-width: 650px) {
+    .container {
+        font-size: 0;
+    }
+    .shopping-list-section {
+        display: inline-block;
+        width: 60%;
+        margin-bottom: 0;
+        vertical-align: top;
+        font-size: 1rem;
+    }
+    .summary-section {
+        display: inline-block;
+        width: 35%;
+        margin-left: 5%;
+        vertical-align: top;
+        font-size: 1rem;
+    }
+}
+
+.add-form {
+    padding: 15px;
+    border-bottom: 1px solid var(--grey-border);
+    font-size: 0;
+}
+
+.add-form input {
+    display: inline-block;
+    width: 75%;
+    padding: 12px 15px;
+    border: 1px solid var(--grey-border);
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    vertical-align: top;
+    margin: 0;
+}
+
+.add-form input:focus {
+    outline: 2px solid var(--main-blue);
+}
+
+.blue-button {
+    display: inline-block;
+    width: 25%;
+    background-color: var(--main-blue);
+    color: white;
+    border: none;
+    border-bottom: 3px solid var(--dark-blue);
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    vertical-align: top;
+    margin: 0;
+}
+
+.product-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.product-row {
+    display: block; 
+    padding: 15px;
+    border-bottom: 1px solid var(--grey-border);
+    text-align: center;
+}
+
+.product-row:last-child {
+    border-bottom: none;
+}
+
+.product-name, .product-qty, .product-actions {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 650px) {
+    .product-row {
+        text-align: left;
+        font-size: 0;
+        padding: 15px;
+    }
+    .product-name {
+        display: inline-block;
+        width: 35%;
+        margin-bottom: 0;
+        vertical-align: middle;
+        font-size: 1.1rem;
+    }
+    .product-qty {
+        display: inline-block;
+        width: 30%;
+        text-align: center;
+        margin-bottom: 0;
+        vertical-align: middle;
+        font-size: 1rem;
+    }
+    .product-actions {
+        display: inline-block;
+        width: 35%;
+        text-align: right;
+        margin-bottom: 0;
+        vertical-align: middle;
+        font-size: 1rem;
+    }
+}
+
+.edit-field {
+    font-size: 1rem;
+    padding: 4px 8px;
+    border: 1px solid var(--main-blue);
+    border-radius: 4px;
+    width: 90px;
+    vertical-align: middle;
+}
+
+.minus-btn, .plus-btn {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 28px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+.minus-btn {
+    background-color: var(--red-btn);
+    border-bottom: 3px solid var(--dark-red);
+}
+
+.minus-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.plus-btn {
+    background-color: var(--green-btn);
+    border-bottom: 3px solid var(--dark-green);
+}
+
+.qty-circle {
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid var(--grey-border);
+    padding: 4px 12px;
+    height: 32px;
+    line-height: 22px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.status-btn {
+    display: inline-block;
+    background-color: var(--grey-bg);
+    border: 1px solid var(--grey-border);
+    border-bottom: 3px solid var(--dark-grey);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.delete-btn {
+    display: inline-block;
+    background-color: var(--red-btn);
+    color: white;
+    border: none;
+    border-bottom: 3px solid var(--dark-red);
+    border-radius: 4px;
+    width: 34px;
+    height: 34px;
+    line-height: 28px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.summary-panel h2 {
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.tags {
+    margin: 0;
+    padding: 20px;
+    list-style: none;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.summary-panel:last-child .tags {
+    border-bottom: none;
+}
+
+.tags li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.tag-item {
+    background-color: var(--grey-bg);
+    border: 1px solid var(--grey-border);
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.bought-item {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.bought-item .tag-number {
+    text-decoration: line-through;
+    color: white;
+}
+
+.tag-number {
+    background-color: var(--orange-circle);
+    color: white;
+    border-radius: 14px;
+    display: inline-block;
+    min-width: 26px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;
+    font-size: 0.95rem;
+    font-weight: normal;
+    text-align: center;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    margin-bottom: 8px;
+    background-color: var(--main-purple);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    z-index: 10;
+    white-space: nowrap;
+    transform: translateX(-50%) scale(0);
+    transform-origin: bottom center;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+[data-tooltip]:hover::before {
+    transform: translateX(-50%) scale(1);
+}
+
+.student-badge {
+    position: fixed;
+    bottom: -50px;
+    left: 20px;
+    width: 140px;
+    height: 90px;
+    background-color: var(--main-purple);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    padding: 15px 10px;
+    z-index: 100;
+    transition: bottom 0.4s ease, background-color 0.4s ease;
+}
+
+.badge-title {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.badge-name {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.student-badge:hover {
+    bottom: 0;
+    background-color: var(--hover-purple);
+}
+
+.student-badge:hover .badge-name {
+    opacity: 1;
+}
+
+@media print {
+    body {
+        background-color: white;
+    }
+    .add-form, .minus-btn, .plus-btn, .delete-btn, .status-btn, [data-tooltip]::before, .sr-only {
+        display: none;
+    }
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+    .shopping-list-section, .summary-section {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--grey-border);
+        margin-bottom: 20px;
+        margin-left: 0;
+    }
+    .product-name, .product-qty, .product-actions {
+        display: inline-block;
+        width: auto;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    .student-badge {
+        position: static;
+        background-color: white;
+        color: black;
+        border: 2px solid var(--main-purple);
+        padding: 10px;
+        margin-top: 30px;
+        border-radius: 8px;
+        width: auto;
+        height: auto;
+        transform: none;
+    }
+    .badge-title {
+        display: none;
+    }
+    .badge-name {
+        display: block;
+        opacity: 1;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
 }
