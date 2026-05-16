@@ -1,16 +1,93 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
+<html lang="uk">
+<head>
     <meta charset="UTF-8">
-    <title>My Page</title>
-
-
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy List</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+    <main class="container">
+        <section class="shopping-list-section">
+            <header class="add-item-header">
+                <form class="add-form" action="#" method="GET">
+                    <label for="product-name" class="sr-only">Назва товару</label>
+                    <input type="text" id="product-name" name="product" placeholder="Назва товару">
+                    <button type="submit" class="blue-button" data-tooltip="Додати новий товар">Додати</button>
+                </form>
+            </header>
+
+            <ul class="product-list">
+                <li class="product-row">
+                    <span class="product-name">Помідори</span>
+                    <div class="product-qty">
+                        <button type="button" class="minus-btn hidden-element" disabled>-</button>
+                        <span class="qty-circle">2</span>
+                        <button type="button" class="plus-btn hidden-element" disabled>+</button>
+                    </div>
+                    <div class="product-actions">
+                        <button type="button" class="status-btn" data-tooltip="Позначити як куплене">Не куплено</button>
+                    </div>
+                </li>
+
+                <li class="product-row">
+                    <span class="product-name">Печиво</span>
+                    <div class="product-qty">
+                        <button type="button" class="minus-btn" data-tooltip="Зменшити кількість">-</button>
+                        <span class="qty-circle">2</span>
+                        <button type="button" class="plus-btn" data-tooltip="Збільшити кількість">+</button>
+                    </div>
+                    <div class="product-actions">
+                        <button type="button" class="status-btn" data-tooltip="Скасувати покупку">Куплено</button>
+                        <button type="button" class="delete-btn" data-tooltip="Видалити товар">×</button>
+                    </div>
+                </li>
+
+                <li class="product-row">
+                    <span class="product-name">
+                        <label for="edit-cheese" class="sr-only">Редагувати</label>
+                        <input type="text" id="edit-cheese" name="edit-item" value="Сир" class="edit-field">
+                    </span>
+                    <div class="product-qty">
+                        <button type="button" class="minus-btn" data-tooltip="Мінімальна кількість" disabled>-</button>
+                        <span class="qty-circle">1</span>
+                        <button type="button" class="plus-btn" data-tooltip="Збільшити кількість">+</button>
+                    </div>
+                    <div class="product-actions">
+                        <button type="button" class="status-btn" data-tooltip="Скасувати покупку">Куплено</button>
+                        <button type="button" class="delete-btn" data-tooltip="Видалити товар">×</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <aside class="summary-section">
+            <article class="summary-panel">
+                <h2>Залишилося</h2>
+                <ul class="tags">
+                    <li>
+                        <span class="tag-item">Печиво <span class="tag-number">2</span></span>
+                    </li>
+                    <li>
+                        <span class="tag-item">Сир <span class="tag-number">1</span></span>
+                    </li>
+                </ul>
+            </article>
+            
+            <article class="summary-panel">
+                <h2>Куплено</h2>
+                <ul class="tags">
+                    <li>
+                        <span class="tag-item bought-item">Помідори <span class="tag-number">2</span></span>
+                    </li>
+                </ul>
+            </article>
+        </aside>
+    </main>
+
+    <aside class="student-badge">
+        <span class="badge-title">Buy List</span>
+        <span class="badge-name">Created by:<br>Artem Diatlov</span>
+    </aside>
 </body>
 </html>
